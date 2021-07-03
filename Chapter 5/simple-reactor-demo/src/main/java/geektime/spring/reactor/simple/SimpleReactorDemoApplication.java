@@ -20,6 +20,7 @@ public class SimpleReactorDemoApplication implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		Flux.range(1, 6)
+				//				.publishOn(Schedulers.elastic())  //注意与上面顺序不一样会有不一样结果
 				.doOnRequest(n -> log.info("Request {} number", n)) // 注意顺序造成的区别
 //				.publishOn(Schedulers.elastic())
 				.doOnComplete(() -> log.info("Publisher COMPLETE 1"))
@@ -38,7 +39,7 @@ public class SimpleReactorDemoApplication implements ApplicationRunner {
 				.subscribe(i -> log.info("Subscribe {}: {}", Thread.currentThread(), i),
 						e -> log.error("error {}", e.toString()),
 						() -> log.info("Subscriber COMPLETE")//,
-//						s -> s.request(4)
+//						s -> s.request(4)   //加入backpressure相关的动作，这里是每次请求多少个
 				);
 		Thread.sleep(2000);
 	}
