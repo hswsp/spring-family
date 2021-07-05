@@ -68,7 +68,7 @@ public class RedisDemoApplication implements ApplicationRunner {
                 })
                 .subscribe(b -> log.info("Boolean: {}", b),
                         e -> log.error("Exception {}", e.getMessage()),
-                        () -> cdl.countDown());
+                        () -> cdl.countDown());//publish在single里执行的，要等全部结果介素才执行，使用countDownLatch
         log.info("Waiting");
         cdl.await();
     }
