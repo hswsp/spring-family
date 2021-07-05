@@ -64,7 +64,7 @@ public class SimpleR2dbcDemoApplication extends AbstractR2dbcConfiguration
 				.fetch()
 				.first()
 				.doFinally(s -> cdl.countDown())
-//				.subscribeOn(Schedulers.elastic())
+				.subscribeOn(Schedulers.elastic())
 				.subscribe(c -> log.info("Fetch execute() {}", c));
 
 		client.select()
@@ -75,7 +75,7 @@ public class SimpleR2dbcDemoApplication extends AbstractR2dbcConfiguration
 				.fetch()
 				.all()
 				.doFinally(s -> cdl.countDown())
-//				.subscribeOn(Schedulers.elastic())
+				.subscribeOn(Schedulers.elastic())
 				.subscribe(c -> log.info("Fetch select() {}", c));
 
 		log.info("After Starting.");
