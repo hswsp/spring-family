@@ -22,7 +22,7 @@ public class ContextHierarchyDemoApplication implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		ApplicationContext fooContext = new AnnotationConfigApplicationContext(FooConfig.class);
 		ClassPathXmlApplicationContext barContext = new ClassPathXmlApplicationContext(
-				new String[] {"applicationContext.xml"}, fooContext);
+				new String[] {"applicationContext.xml"}, fooContext);//fooContext是父类context
 		TestBean bean = fooContext.getBean("testBeanX", TestBean.class);
 		bean.hello();
 
