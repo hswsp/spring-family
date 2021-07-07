@@ -5,7 +5,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
-    
+
     <!--两个上下文都进行AOP增强，然后把Aspect定义到root上下文中，就都可以增强-->
     <aop:aspectj-autoproxy/>
 
