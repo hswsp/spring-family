@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
 public class PerformanceInteceptor implements HandlerInterceptor {
-    private ThreadLocal<StopWatch> stopWatch = new ThreadLocal<>();
+    private ThreadLocal<StopWatch> stopWatch = new ThreadLocal<>();//mvc提供的记录运行时间的工具类
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -24,7 +24,7 @@ public class PerformanceInteceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         stopWatch.get().stop();
-        stopWatch.get().start();
+        stopWatch.get().start();//记录呈现的时间，即postHanlde-afterCompletion的耗时
     }
 
     @Override
