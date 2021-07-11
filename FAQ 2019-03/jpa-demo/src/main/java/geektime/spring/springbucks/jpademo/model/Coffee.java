@@ -19,7 +19,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "T_MENU")
+@Table(name = "t_coffee")
 @Builder
 @Data
 @NoArgsConstructor
