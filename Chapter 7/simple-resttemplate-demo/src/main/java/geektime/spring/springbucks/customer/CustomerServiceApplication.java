@@ -28,7 +28,7 @@ public class CustomerServiceApplication implements ApplicationRunner {
 		new SpringApplicationBuilder()
 				.sources(CustomerServiceApplication.class)
 				.bannerMode(Banner.Mode.OFF)
-				.web(WebApplicationType.NONE)
+				.web(WebApplicationType.NONE)//这样就不会再启动一个tomcat
 				.run(args);
 	}
 
