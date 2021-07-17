@@ -27,7 +27,7 @@ public class WebclientDemoApplication implements ApplicationRunner {
 
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(WebclientDemoApplication.class)
-				.web(WebApplicationType.NONE)
+				.web(WebApplicationType.NONE)//禁用自带的tomcat,使用webClient的Builder启动
 				.bannerMode(Banner.Mode.OFF)
 				.run(args);
 	}
@@ -42,9 +42,9 @@ public class WebclientDemoApplication implements ApplicationRunner {
 		CountDownLatch cdl = new CountDownLatch(2);
 
 		webClient.get()
-				.uri("/coffee/{id}", 1)
+				.uri("/coffee/{id}", 1)//1会替换{id}
 				.accept(MediaType.APPLICATION_JSON_UTF8)
-				.retrieve()
+				.retrieve()//获取结果
 				.bodyToMono(Coffee.class)
 				.doOnError(t -> log.error("Error: ", t))
 				.doFinally(s -> cdl.countDown())
@@ -72,7 +72,7 @@ public class WebclientDemoApplication implements ApplicationRunner {
 				.uri("/coffee/")
 				.retrieve()
 				.bodyToFlux(Coffee.class)
-				.toStream()
+				.toStream()//这是个block的操作
 				.forEach(c -> log.info("Coffee in List: {}", c));
 	}
 }
