@@ -86,7 +86,8 @@ public class CustomerRunner implements ApplicationRunner {
 
         Resource<CoffeeOrder> order = resp.getBody();
         Link items = order.getLink("items");
-        req = RequestEntity.post(items.getTemplate().expand()).body(Collections.singletonMap("_links", coffee.getLink("self")));
+        req = RequestEntity.post(items.getTemplate().expand())
+                .body(Collections.singletonMap("_links", coffee.getLink("self")));//只要输入一个Link就行
         ResponseEntity<String> itemResp = restTemplate.exchange(req, String.class);
         log.info("add Order Items Response: {}", itemResp);
     }
