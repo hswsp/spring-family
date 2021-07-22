@@ -1,7 +1,10 @@
 package geektime.spring.hello;
 
+import geektime.spring.hello.greeting.GreetingApplicationRunner;
+import geektime.spring.hello.greeting.GreetingAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class AutoconfigureDemoApplication {
@@ -10,4 +13,8 @@ public class AutoconfigureDemoApplication {
 		SpringApplication.run(AutoconfigureDemoApplication.class, args);
 	}
 
+	@Bean
+	public GreetingApplicationRunner greetingApplicationRunner(){
+		return new GreetingApplicationRunner("spring");
+	}
 }

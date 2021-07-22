@@ -6,12 +6,17 @@
 	<groupId>geektime.spring.hello</groupId>
 	<artifactId>greeting</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
 	<name>greeting</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 		<spring-boot.version>2.1.3.RELEASE</spring-boot.version>
+
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
 	</properties>
 
 	<dependencyManagement>
