@@ -39,7 +39,7 @@ public class SbaServerApplication extends WebSecurityConfigurerAdapter {
 				.csrf()
 				.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 				.ignoringAntMatchers(
-						adminContextPath + "/instances",
+						adminContextPath + "/instances",//client向server注册实例信息的url
 						adminContextPath + "/actuator/**"
 				);
 	}
