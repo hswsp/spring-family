@@ -49,7 +49,7 @@ public class CustomerServiceApplication {
 
 			okHttpClient = new OkHttpClient.Builder()
 					.sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) tmf.getTrustManagers()[0])
-					.hostnameVerifier((hostname, session) -> true)
+					.hostnameVerifier((hostname, session) -> true)//略过hostname校验
 					.build();
 		} catch (Exception e) {
 			log.error("Exception occurred!", e);
