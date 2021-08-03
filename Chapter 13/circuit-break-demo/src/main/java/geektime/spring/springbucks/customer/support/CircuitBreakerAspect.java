@@ -15,8 +15,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Slf4j
 public class CircuitBreakerAspect {
     private static final Integer THRESHOLD = 3;
-    private Map<String, AtomicInteger> counter = new ConcurrentHashMap<>();
-    private Map<String, AtomicInteger> breakCounter = new ConcurrentHashMap<>();
+    private Map<String, AtomicInteger> counter = new ConcurrentHashMap<>();//记录失败的次数
+    private Map<String, AtomicInteger> breakCounter = new ConcurrentHashMap<>();//记录被断路保护的次数
 
     @Around("execution(* geektime.spring.springbucks.customer.integration..*(..))")
     public Object doWithCircuitBreaker(ProceedingJoinPoint pjp) throws Throwable {
